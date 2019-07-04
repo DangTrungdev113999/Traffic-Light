@@ -22,20 +22,24 @@ class TrafficLight extends Component {
             this.setState({
                 currentColor: 'green'
             });
-        } else {
+        }else if (color === 'green') {
             this.setState({
                 currentColor: 'red'
+            });
+        } else {
+        	this.setState({
+                currentColor: ''
             });
         }
     }
 
-
     getColor = () => {
     	let { currentTime } = this.props
-    	setInterval(() => {
-            this.getNextColor(this.props.currentColor);
-    		this.props.onAutoChangeColor(this.state.currentColor);
+    	setInterval( async () => {
+           		await this.getNextColor(this.props.currentColor);
+    			await this.props.onAutoChangeColor(this.state.currentColor);
         }, currentTime );
+
     }
 
     changeTime = (value) => {
@@ -45,24 +49,25 @@ class TrafficLight extends Component {
 	render() {
 		return (
 			<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-				<button 
-					type="button" 
-					className="btn btn-success"
-					onClick={ this.getColor }
-				>Tự động</button>
-				<hr/> 
-				<div>thời gian: {this.props.currentTime } ms</div><br/>
+				<div>thời gian lập: { this.props.currentTime } ms</div><br/>
 				<button 
 					type="button" 
 					className="btn btn-primary"
 					onClick={ () => this.changeTime(-1000) }
-				>giản</button>&nbsp;
+				>giảm</button>&nbsp;
 				<button 
 					type="button" 
 					className="btn btn-primary"
 					onClick={ () => this.changeTime(1000) }
 				>tằng</button>
 				<hr/>
+				<div>tự động chạy</div><br/>
+				<button 
+					type="button" 
+					className="btn btn-success"
+					onClick={ this.getColor }
+				>Bắt đầu</button>
+				<hr/> 
 			</div>
 			)
 	}

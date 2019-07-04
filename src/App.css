@@ -1,4 +1,4 @@
-f.App {
+.App {
   text-align: center;
 }
 
@@ -35,6 +35,7 @@ f.App {
 .TrafficLight {
   display: flex;
   flex-direction: column;
+  border: solid 3px gray;
 }
 
 .TrafficLight .buld {
@@ -42,7 +43,7 @@ f.App {
   height: 64px;
   display: inline-block;
   border-radius: 50%;
-  margin: 10px;
+  margin: 10px auto;
   opacity: 0.2;
 }
 
@@ -64,4 +65,21 @@ f.App {
 
 .mt-50 {
   margin-top: 50px;
+}
+
+span {
+  width: 64px;
+  height: 64px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.control-color {
+  display: flex;
+  flex-direction: row;
+
+}
+
+span.active {
+  border: solid 3px black;
 }

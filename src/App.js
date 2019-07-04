@@ -15,7 +15,6 @@ class App extends Component {
     }
 
     onAutoChangeColor = (value) => {
-        console.log(value);
         this.setState({
             currentColor: value
         });
@@ -23,9 +22,24 @@ class App extends Component {
 
     onAutoChangeTime = (value) => {
         this.setState({
-            currentTime: (this.state.currentTime + value >= 2000 && this.state.currentTime + value <= 100000) ?
+            currentTime: (this.state.currentTime + value >= 1000 && this.state.currentTime + value <= 100000) ?
                         this.state.currentTime + value : this.state.currentTime
         })
+    }
+
+    onActiveColor = (color) => {
+        this.setState({
+            currentColor: color
+        })
+    }
+
+    onReset = (value) => {
+        if(value) {
+            this.setState({
+                currentColor: ''
+            })
+
+        }
     }
 
     render() {
@@ -48,10 +62,14 @@ class App extends Component {
                                     currentColor = { this.state.currentColor }
                                     currentTime = { this.state.currentTime }
                                     onAutoChangeColor={ this.onAutoChangeColor }
-                                    onAutoChangeTime={ this.onAutoChangeTime }
+                                    onAutoChangeTime= { this.onAutoChangeTime }
                                 />
 
-                                <HandWork/>
+                                <HandWork
+                                    currentColor = { this.state.currentColor }
+                                    onActiveColor = { this.onActiveColor }
+                                    onReset = { this.onReset }
+                                />
 
                             </div>
                         </div>
